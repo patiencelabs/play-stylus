@@ -1,7 +1,7 @@
 play-stylus
 ===========
 
-[stylus] [1] asset handling for [Play 2.0] [2], implemented as an [sbt] [3]
+[stylus] [1] asset handling for [Play 2.2] [2], implemented as an [sbt] [3]
 plugin (very similar to Play's handling of CoffeeScript and LESS).
 
 Prerequisites
@@ -22,7 +22,7 @@ In your Play application folder, add
 
     resolvers += "Patience Releases" at "http://repo.patience.io/"
 
-    addSbtPlugin("patience" % "play-stylus" % "0.1.3")
+    addSbtPlugin("patience" % "play-stylus" % "0.2.0")
 
 to `project/plugins.sbt`.
 

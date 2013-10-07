@@ -1,6 +1,6 @@
 package patience.assets
 
-import sbt.PlayExceptions.AssetCompilationException
+import play.PlayExceptions.AssetCompilationException
 import java.io.File
 import scala.sys.process._
 
@@ -19,7 +19,7 @@ object StylusCompiler {
       (cssOutput, Some(compressedCssOutput), Seq(stylFile))
     } catch {
       case e: StylusCompilationException => {
-        throw AssetCompilationException(Some(stylFile), "Stylus compiler: " + e.message, e.line, e.column)
+        throw AssetCompilationException(Some(stylFile), "Stylus compiler: " + e.message, Some(e.line), Some(e.column))
       }
     }
   }
@@ -36,7 +36,7 @@ object StylusCompiler {
     if (process.exitValue == 0)
       out.toString
     else
-      throw new StylusCompilationException(err.toString)
+      throw new StylusCompilationException(err.toString())
   }
 
   private val MarkedLine = """\s*>\s*(\d+)\|.*?""".r
@@ -49,7 +49,7 @@ object StylusCompiler {
     private def parseError(error: String): (Int, Int, String) = {
       var seen = 0
       var line = 0
-      var column = 0
+      val column = 0
       var message = "Unknown error, try running stylus directly"
       for (errline: String <- augmentString(error).lines) {
         errline match {

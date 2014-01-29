@@ -22,7 +22,7 @@ In your Play application folder, add
 
     resolvers += "Patience Releases" at "http://repo.patience.io/"
 
-    addSbtPlugin("patience" % "play-stylus" % "1.0.0-SNAPSHOT")
+    addSbtPlugin("patience" % "play-stylus" % "1.0.0")
 
 to `project/plugins.sbt`, and
 

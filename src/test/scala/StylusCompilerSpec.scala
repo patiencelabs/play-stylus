@@ -3,6 +3,7 @@ package patience.assets.test
 import org.scalatest.Spec
 import java.io.File
 import patience.assets.StylusCompiler
+import play.PlayExceptions.AssetCompilationException
 
 class StylusCompilerSpec extends Spec {
 
@@ -31,13 +32,13 @@ class StylusCompilerSpec extends Spec {
 
     it("should parse error for ill-formed stylus file") {
       val stylFile = new File("test_cases/ill_formed.styl")
-      val thrown = intercept[sbt.PlayExceptions.AssetCompilationException] {
+      val thrown = intercept[play.PlayExceptions.AssetCompilationException] {
         StylusCompiler.compile(stylFile, Nil)
       }
       val expectedMessage =
-        """Compilation error [Stylus compiler: illegal unary "in", missing left-hand operand]"""
+        """Compilation error[Stylus compiler: illegal unary "in", missing left-hand operand]"""
       assert(thrown.getMessage === expectedMessage)
-      assert(thrown.line.getOrElse(0) === 2)
+      assert(thrown.line === 2)
     }
 
   }

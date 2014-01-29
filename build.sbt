@@ -4,7 +4,7 @@ name := "play-stylus"
 
 sbtPlugin := true
 
-version := "0.2.0"
+version := "1.0.0-SNAPSHOT"
 
 // Incompatible with 2.9.2.
 // 2.9.3 (play 2.1.x), 2.10.2 (play 2.2.x) are known-to-compile scalaVersions.

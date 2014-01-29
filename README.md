@@ -22,11 +22,15 @@ In your Play application folder, add
 
     resolvers += "Patience Releases" at "http://repo.patience.io/"
 
-    addSbtPlugin("patience" % "play-stylus" % "0.2.0")
+    addSbtPlugin("patience" % "play-stylus" % "1.0.0-SNAPSHOT")
 
-to `project/plugins.sbt`.
+to `project/plugins.sbt`, and
 
-The plugin automatically registers for compilation of `app/assets/**/*.styl`, that is all stylus files in your `app/assets` directory.
+    patience.assets.StylusPlugin.stylusSettings
+
+to `build.sbt`.
+
+The plugin registers for compilation of `app/assets/**/*.styl`, that is all stylus files in your `app/assets` directory.
 
 sbt settings
 ------------

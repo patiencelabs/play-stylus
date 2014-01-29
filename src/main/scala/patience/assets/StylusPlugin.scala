@@ -16,7 +16,7 @@ object StylusPlugin extends Plugin {
     stylusOptions in Compile
   )
 
-  override val settings = Seq(
+  val stylusSettings = Seq(
     stylusEntryPoints <<= (sourceDirectory in Compile).apply(base => (base / "assets" ** "*.styl") --- base / "assets" ** "_*"),
     stylusOptions := Seq.empty[String],
     resourceGenerators in Compile <+= StylusWatcher

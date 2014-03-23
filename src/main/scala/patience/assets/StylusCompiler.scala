@@ -5,15 +5,16 @@ import java.io.File
 import scala.sys.process._
 
 object StylusCompiler {
+  val stylusCommand = if (System getProperty "os.name" contains "Windows") "stylus.cmd" else "stylus"
 
   def compile(stylFile: File, options: Seq[String]): (String, Option[String], Seq[File]) = {
     try {
       val parentPath = stylFile.getParentFile.getAbsolutePath
       val cssOutput = captureOutput((
-        Seq("stylus -I", parentPath) ++ options
+        Seq(stylusCommand + " -I", parentPath) ++ options
       ).mkString(" ") #< stylFile)
       val compressedCssOutput = captureOutput((
-        Seq("stylus -c -I", parentPath) ++ options
+        Seq(stylusCommand + " -c -I", parentPath) ++ options
       ).mkString(" ") #< stylFile)
 
       (cssOutput, Some(compressedCssOutput), Seq(stylFile))

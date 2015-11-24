@@ -1,3 +1,6 @@
+*__Warning!__ This package is unmaintained and the resolver url below likely to disappear in the upcomming weeks*
+
+
 play-stylus
 ===========
 
